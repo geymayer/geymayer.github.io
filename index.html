@@ -232,41 +232,29 @@ section.block { padding-block: clamp(4rem, 10vw, 8rem); }
 .services p { margin: 0; }
 .services .stack { margin-top: .75rem; font-size: .95rem; font-stretch: 87%; color: #333; }
 
-/* Projects: a list, because it is one */
+/* Reference: one project, shown properly */
 .work { background: var(--mist); }
-
-.projects { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
-.projects li {
+.feature {
   display: grid;
-  grid-template-columns: minmax(10rem, 1fr) 2fr minmax(9rem, 1fr);
-  gap: .5rem 2.5rem;
-  padding-block: 1.6rem;
-  border-bottom: 1px solid var(--rule);
-  align-items: baseline;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 1.5rem clamp(2rem, 6vw, 6rem);
+  border-top: 2px solid var(--ink);
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
 }
-.projects .pname {
+.feature .pname {
   font-stretch: 125%;
   font-weight: 800;
-  font-size: clamp(1.4rem, 2.6vw, 2rem);
-  line-height: 1.05;
-  letter-spacing: -.015em;
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -.02em;
   margin: 0;
 }
-.projects p { margin: 0; }
-.projects .meta { font-size: .95rem; font-stretch: 87%; }
-.status {
-  display: inline-block;
-  font-size: .85rem;
-  font-weight: 600;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  padding: .05rem .55rem;
-  margin-top: .45rem;
-}
-
-@media (max-width: 46rem) {
-  .projects li { grid-template-columns: 1fr; gap: .4rem; }
-}
+.facts-list { margin: 1.75rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: 1.25rem 2rem; }
+.facts-list div { border-top: 1px solid var(--rule); padding-top: .6rem; }
+.facts-list dt { font-size: .9rem; font-stretch: 87%; }
+.facts-list dd { margin: .15rem 0 0; font-weight: 700; font-stretch: 112%; font-size: 1.1rem; line-height: 1.25; }
+.feature .stack { font-size: .95rem; font-stretch: 87%; color: #333; margin: 0; }
+@media (max-width: 46rem) { .feature { grid-template-columns: minmax(0, 1fr); } }
 
 /* Approach */
 .approach {
@@ -387,39 +375,20 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
 
   <section class="block work" aria-labelledby="h-work">
     <div class="wrap">
-      <h2 class="display" id="h-work"><span lang="de">Woran ich arbeite</span><span lang="en">What I'm working on</span></h2>
-      <ul class="projects">
-        <li>
-          <h3 class="pname">The Journey</h3>
-          <p lang="de">Kursplattform mit zahlenden Teilnehmerinnen und Teilnehmern in Österreich, Deutschland, Großbritannien und Rumänien. Web und App, Video-Streaming, vollständig selbst gehostet.</p>
-          <p lang="en">Paid course platform with members in Austria, Germany, the UK and Romania. Web and app, video streaming, fully self-hosted.</p>
-          <div class="meta"><span lang="de">Kundenprojekt</span><span lang="en">Client project</span><br>Next.js, Payload CMS, Bunny Stream</div>
-        </li>
-        <li>
-          <h3 class="pname">Breadcrumbs</h3>
-          <p lang="de">Privater Standortverlauf mit Suche. Zeichnet akkuschonend auf und synchronisiert nur mit dem eigenen Server, nicht mit der Cloud eines Konzerns.</p>
-          <p lang="en">Private location history with search. Records with minimal battery drain and syncs only with your own server, not a big tech cloud.</p>
-          <div class="meta">Android, iOS<br><span class="status"><span lang="de">In Entwicklung</span><span lang="en">In development</span></span></div>
-        </li>
-        <li>
-          <h3 class="pname">Haus</h3>
-          <p lang="de">Die App für ein Haus mit mehreren Familien: geteilte Aufgaben, Müllkalender und Zählerstände an einem Ort.</p>
-          <p lang="en">The app for a house shared by several families: shared chores, bin collection dates and meter readings in one place.</p>
-          <div class="meta">Android, iOS<br><span class="status"><span lang="de">Eigenes Projekt</span><span lang="en">Own project</span></span></div>
-        </li>
-        <li>
-          <h3 class="pname">Cook</h3>
-          <p lang="de">Rezepte, Wochenplan und Einkaufsliste, abgestimmt auf den eigenen Haushalt.</p>
-          <p lang="en">Recipes, weekly meal plan and shopping list, tailored to your household.</p>
-          <div class="meta">Android, iOS<br><span class="status"><span lang="de">Eigenes Projekt</span><span lang="en">Own project</span></span></div>
-        </li>
-        <li>
-          <h3 class="pname">Runtipi App Store</h3>
-          <p lang="de">Ein eigener App-Store für Runtipi, mit dem sich selbst gehostete Dienste auf dem Heimserver mit einem Klick installieren lassen.</p>
-          <p lang="en">A custom app store for Runtipi that installs self-hosted services on a home server in one click.</p>
-          <div class="meta">Open Source<br><a href="https://github.com/geymayer/runtipi-appstore">GitHub</a></div>
-        </li>
-      </ul>
+      <h2 class="display" id="h-work"><span lang="de">Referenz</span><span lang="en">Reference</span></h2>
+      <article class="feature">
+        <h3 class="pname">The Journey</h3>
+        <div class="feature-body">
+          <p lang="de">Eine Kursplattform für einen Kunden, mit zahlenden Teilnehmerinnen und Teilnehmern in Österreich, Deutschland, Großbritannien und Rumänien. Ich habe Web-Plattform und App entwickelt und betreibe die gesamte Infrastruktur: Server, Datenbank, Medienspeicher und Video-Streaming.</p>
+          <p lang="en">A course platform for a client, with paying members in Austria, Germany, the UK and Romania. I built the web platform and the app and run the entire infrastructure: servers, database, media storage and video streaming.</p>
+          <dl class="facts-list">
+            <div><dt lang="de">Mitglieder in</dt><dt lang="en">Members in</dt><dd lang="de">4 Ländern</dd><dd lang="en">4 countries</dd></div>
+            <div><dt lang="de">Umfang</dt><dt lang="en">Scope</dt><dd>Web, App, Hosting</dd></div>
+            <div><dt lang="de">Betrieb</dt><dt lang="en">Hosting</dt><dd lang="de">Eigene Server in Deutschland</dd><dd lang="en">Own servers in Germany</dd></div>
+          </dl>
+          <p class="stack">Next.js, Payload CMS, MongoDB, Docker, Bunny Stream</p>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -458,7 +427,6 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
       <div class="facts">
         <p>Leibnitz, <span lang="de">Steiermark, Österreich</span><span lang="en">Styria, Austria</span></p>
         <p><span lang="de">Deutsch und Englisch</span><span lang="en">German and English</span></p>
-        <p><a href="https://github.com/geymayer">GitHub</a></p>
       </div>
     </div>
   </section>
@@ -480,7 +448,8 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
         <p>Florian Geymayer<br>
           <mark class="todo">Straße und Hausnummer</mark><br>
           <mark class="todo">PLZ</mark> Leibnitz, Österreich</p>
-        <p>E-Mail: <mark class="todo">kontakt@floriangeymayer.com</mark></p>
+        <p>E-Mail: <mark class="todo">kontakt@floriangeymayer.com</mark><br>
+          Telefon: <mark class="todo">+43 …</mark></p>
         <p>Unternehmensgegenstand: Entwicklung von Software und mobilen Anwendungen<br>
           UID-Nummer: <mark class="todo">ATU…</mark><br>
           Gewerbe: <mark class="todo">Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik</mark><br>
