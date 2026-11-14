@@ -7,337 +7,358 @@
 <meta name="description" content="Florian Geymayer entwickelt native Apps für Android und iOS mit Kotlin Multiplatform, Jetpack Compose und SwiftUI – mit Backend und Hosting in der EU. Leibnitz, Steiermark.">
 <link rel="canonical" href="https://www.floriangeymayer.com/">
 <meta property="og:title" content="Florian Geymayer – App-Entwicklung">
-<meta property="og:description" content="Native Apps für Android und iOS, aus einem gemeinsamen Kotlin-Kern.">
+<meta property="og:description" content="Apps, die sich auf jedem Handy richtig anfühlen. Native Apps für Android und iOS.">
 <meta property="og:url" content="https://www.floriangeymayer.com/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230068d6'/%3E%3Cpath d='M9 8h13M9 8v16M9 16h10' stroke='%23fff' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#17352a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2317352a'/%3E%3Crect x='10' y='6' width='12' height='20' rx='3.5' fill='none' stroke='%23f4b6c2' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/*
+  VOICE   Direct, calm, a craftsman talking to a client. Sie-Form.
+  IDEA    The pitch is "one app, native on both platforms" – so the hero proves it:
+          a working phone you can flip between Android and iOS.
+  COLOUR  Deep Kernöl green fields, a near-white with a green breath, one rosé accent.
+  TYPE    Schibsted Grotesk throughout; heavy and tight for display, relaxed for text.
+  LAYOUT  Left-aligned. Hero: words left, phone right; stacked on phones.
+*/
 @font-face {
-  font-family: "Archivo";
-  src: url("fonts/archivo.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
+  font-family: "Schibsted";
+  src: url("fonts/schibsted-grotesk.woff2") format("woff2-variations");
+  font-weight: 400 900;
   font-display: swap;
 }
 
 :root {
-  --blue: #0068d6;
-  --ink: #0d1b2a;
-  --paper: #fff;
-  --mist: #f1f5fa;
-  --night: #062a4f;
-  --rule: rgba(13, 27, 42, .14);
-  --measure: 38rem;
+  --kernoel: #17352a;
+  --kernoel-2: #1f4536;
+  --ground: #f6f7f2;
+  --ink: #13201a;
+  --moss: #3e6b52;
+  --rose: #f4b6c2;
+  --on-dark: #eef2ea;
+  --on-dark-2: #b9c9bd;
+  --rule: rgba(19, 32, 26, .15);
   --pad: clamp(1.25rem, 5vw, 4rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-}
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: "Archivo", system-ui, sans-serif;
+  font-family: "Schibsted", system-ui, sans-serif;
   font-size: 1.0625rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink);
-  background: var(--paper);
-  font-stretch: 100%;
-  font-kerning: normal;
+  background: var(--ground);
+  overflow-x: clip;
 }
 
-/* Two languages, one document */
 html[lang="de"] body [lang="en"],
 html[lang="en"] body [lang="de"] { display: none !important; }
 
-a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: .08em; }
-a:hover { text-decoration-thickness: .14em; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: .07em; }
+a:hover { text-decoration-thickness: .13em; }
+:focus-visible { outline: 3px solid var(--moss); outline-offset: 3px; border-radius: 4px; }
+.dark :focus-visible, footer :focus-visible { outline-color: var(--rose); }
 
-:focus-visible {
-  outline: 3px solid var(--ink);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-.on-dark :focus-visible { outline-color: var(--paper); }
+.wrap { width: 100%; max-width: 78rem; margin-inline: auto; padding-inline: var(--pad); }
 
-.wrap { padding-inline: var(--pad); max-width: 82rem; margin-inline: auto; width: 100%; }
+h1, h2 { font-weight: 800; letter-spacing: -.035em; line-height: 1; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); margin-bottom: clamp(2rem, 4.5vw, 3.25rem); }
+h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; margin: 0 0 .45rem; }
+p { margin: 0 0 1em; max-width: 36rem; }
 
-/* Display type: width is the hierarchy */
-.display {
-  font-stretch: 125%;
-  font-weight: 800;
-  letter-spacing: -.025em;
-  line-height: .98;
-  margin: 0;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-}
-
-h2.display { font-size: clamp(2rem, 5.2vw, 3.75rem); margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-
-h3 {
-  font-stretch: 112%;
-  font-weight: 700;
-  font-size: 1.3rem;
-  line-height: 1.2;
-  margin: 0 0 .5rem;
-}
-
-p { margin: 0 0 1em; max-width: var(--measure); }
+.dark { background: var(--kernoel); color: var(--on-dark); }
 
 /* ---------- Hero ---------- */
-.hero {
-  background: var(--paper);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
-
-.bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-block: 1.25rem;
-  gap: 1rem;
-}
-
-.name {
-  font-weight: 700;
-  font-stretch: 112%;
-  font-size: 1.05rem;
-  text-decoration: none;
-}
-
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.25rem; }
+.name { font-weight: 700; text-decoration: none; letter-spacing: -.01em; }
 .lang {
-  font: inherit;
-  font-weight: 600;
-  font-size: .95rem;
-  background: none;
-  color: var(--ink);
-  border: 2px solid var(--ink);
-  border-radius: 999px;
-  padding: .3rem .85rem;
-  cursor: pointer;
+  font: inherit; font-size: .9rem; font-weight: 600;
+  color: var(--on-dark); background: none;
+  border: 1.5px solid rgba(238, 242, 234, .45); border-radius: 999px;
+  padding: .35rem .9rem; min-height: 2.5rem; cursor: pointer;
 }
-.lang:hover { background: var(--ink); color: var(--paper); }
+.lang:hover { border-color: var(--on-dark); }
 
-.hero-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: clamp(2rem, 8vh, 6rem) clamp(2.5rem, 8vh, 5rem);
-}
-
-.hero h1 {
-  font-size: clamp(2.4rem, 7.6vw, 7rem);
-  max-width: 14ch;
-  hyphens: manual;
-  -webkit-hyphens: manual;
-}
-@media (max-width: 40rem) {
-  .hero-body { justify-content: flex-start; padding-top: 3.5rem; }
-}
-
-.lede {
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-  margin-top: clamp(1.25rem, 3vw, 2rem);
-  max-width: 34rem;
-}
-
-/* The one memorable thing: one core, three targets */
-.fork {
+.hero-grid {
   display: grid;
-  --svgw: 8rem;
-  grid-template-columns: max-content var(--svgw) max-content;
-  justify-content: start;
+  grid-template-columns: minmax(0, 1.15fr) auto;
+  gap: clamp(2.5rem, 6vw, 6rem);
   align-items: center;
-  margin-top: clamp(2.5rem, 6vh, 4.5rem);
-  max-width: 46rem;
+  padding-block: clamp(2rem, 6vw, 4.5rem) clamp(3.5rem, 8vw, 6.5rem);
+}
+.hero h1 { font-size: clamp(2.6rem, 6.4vw, 5.6rem); max-width: 12ch; color: var(--ground); }
+.lede { font-size: clamp(1.08rem, 1.5vw, 1.25rem); color: var(--on-dark); margin-top: clamp(1.25rem, 3vw, 2rem); max-width: 31rem; }
+.lede + .lede { color: var(--on-dark-2); margin-top: 0; }
+
+.demo { display: grid; justify-items: center; gap: 1.1rem; }
+
+.os {
+  display: inline-grid; grid-template-columns: 1fr 1fr;
+  background: var(--kernoel-2); border-radius: 999px; padding: 4px;
+}
+.os button {
+  font: inherit; font-size: .95rem; font-weight: 650;
+  color: var(--on-dark); background: none; border: 0; border-radius: 999px;
+  padding: .45rem 1.3rem; min-height: 2.5rem; cursor: pointer;
+  transition: background .25s, color .25s;
+}
+.os button[aria-pressed="true"] { background: var(--rose); color: var(--ink); }
+.demo-note { font-size: .88rem; color: var(--on-dark-2); text-align: center; max-width: 19rem; margin: 0; }
+
+/* ---------- The phone ---------- */
+.phone {
+  --tint: #2f6b4f;
+  width: 296px; height: 612px;
+  border-radius: 48px; padding: 10px;
+  background: #0b1611;
+  box-shadow: 0 0 0 1.5px #2b4a3c, 0 40px 70px -30px rgba(0, 0, 0, .7);
+}
+.screen {
+  position: relative; height: 100%;
+  border-radius: 38px; overflow: hidden;
+  display: flex; flex-direction: column;
+  font-family: system-ui, -apple-system, "Roboto", sans-serif;
+  color: #1a1c19; line-height: 1.3;
+  background: #f8faf5;
+  transition: background .35s;
+}
+.phone * { transition: border-radius .35s, background-color .35s, padding .35s, font-size .35s, width .35s, height .35s, box-shadow .35s; }
+
+.sbar { display: flex; justify-content: space-between; align-items: center; height: 40px; padding: 4px 24px 0; font-size: 13px; font-weight: 600; position: relative; }
+.cam { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 999px; background: #0b1611; }
+.sig { display: flex; gap: 4px; align-items: center; }
+.sig i { display: block; width: 15px; height: 9px; border-radius: 2px; background: #1a1c19; }
+.sig i:first-child { width: 12px; clip-path: polygon(100% 0, 100% 100%, 0 100%); border-radius: 0; }
+
+.appbar { display: flex; align-items: center; gap: 18px; padding: 8px 16px 6px; }
+.back { display: flex; align-items: center; color: #1a1c19; font-size: 16px; }
+.back .ios-back { display: none; color: var(--tint); }
+.ttl { margin: 0; font-size: 21px; font-weight: 400; letter-spacing: 0; }
+.sub { padding: 0 16px; margin: 0 0 14px; font-size: 13px; color: #5d625c; }
+
+.body { flex: 1; padding: 0 16px; display: flex; flex-direction: column; }
+
+.days { display: flex; gap: 8px; }
+.days button {
+  font: inherit; font-size: 13.5px; font-weight: 500; color: #1a1c19;
+  height: 32px; padding: 0 12px; border: 1px solid #737970; border-radius: 8px;
+  background: transparent; cursor: pointer; white-space: nowrap;
+}
+.days button[aria-pressed="true"] { background: #cde8d6; border-color: #cde8d6; }
+.days button[aria-pressed="true"]::before { content: "✓ "; }
+
+.lbl { font-size: 14px; font-weight: 600; color: var(--tint); margin: 18px 0 4px; }
+
+.slots { list-style: none; margin: 0; padding: 0; }
+.slots button {
+  font: inherit; font-size: 16px; color: #1a1c19; width: 100%;
+  display: flex; align-items: center; gap: 16px;
+  height: 46px; padding: 0 4px; background: none; border: 0; cursor: pointer; text-align: left;
+}
+.radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #43483f; display: grid; place-items: center; flex: none; }
+.slots button[aria-pressed="true"] .radio { border-color: var(--tint); }
+.slots button[aria-pressed="true"] .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--tint); }
+.check { display: none; margin-left: auto; color: var(--tint); font-weight: 600; visibility: hidden; }
+.slots button[aria-pressed="true"] .check { visibility: visible; }
+
+.remind {
+  font: inherit; font-size: 15px; color: #1a1c19; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 10px; padding: 8px 4px; background: none; border: 0; cursor: pointer; text-align: left;
+}
+.sw { position: relative; width: 52px; height: 32px; border-radius: 16px; background: #dfe4dc; border: 2px solid #737970; flex: none; }
+.sw::after { content: ""; position: absolute; top: 6px; left: 6px; width: 16px; height: 16px; border-radius: 50%; background: #737970; transition: all .25s; }
+.remind[aria-pressed="true"] .sw { background: var(--tint); border-color: var(--tint); }
+.remind[aria-pressed="true"] .sw::after { left: 22px; top: 2px; width: 24px; height: 24px; background: #fff; }
+
+.cta {
+  font: inherit; margin-top: auto; margin-bottom: 14px;
+  height: 46px; border: 0; border-radius: 23px;
+  background: var(--tint); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer;
 }
 
-.core {
-  font-stretch: 125%;
-  font-weight: 800;
-  font-size: clamp(1.15rem, 2.6vw, 1.75rem);
-  line-height: 1.05;
-  padding: .7em .8em;
-  border: 3px solid var(--blue);
-  border-radius: .45em;
-  color: var(--blue);
-  background: var(--paper);
-}
-.core small {
-  display: block;
-  font-stretch: 100%;
-  font-weight: 500;
-  font-size: .5em;
-  letter-spacing: 0;
-  margin-bottom: .35em;
-}
+.nav { display: flex; justify-content: space-around; padding: 10px 6px 22px; background: #ebefe7; position: relative; }
+.nav > span { display: grid; justify-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #43483f; }
+.nav svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.nav .pill { width: 56px; height: 30px; border-radius: 15px; display: grid; place-items: center; }
+.nav .on .pill { background: #cde8d6; }
+.nav::after { content: ""; position: absolute; left: 50%; bottom: 7px; transform: translateX(-50%); width: 100px; height: 4px; border-radius: 2px; background: #1a1c19; opacity: .5; }
 
-.fork svg { width: var(--svgw); height: 9.5rem; display: block; overflow: visible; }
-.fork path { fill: none; stroke: var(--blue); stroke-width: 2.4; stroke-linecap: round; }
-@media (max-width: 26rem) { .fork { --svgw: 5.5rem; } .targets span { font-size: .82rem; } }
+/* iOS: same app, different native look */
+.phone[data-os="ios"] .screen { background: #f2f2f7; font-family: -apple-system, system-ui, sans-serif; color: #000; }
+.phone[data-os="ios"] .cam { width: 92px; height: 27px; top: 10px; }
+.phone[data-os="ios"] .sbar { padding-inline: 30px; }
+.phone[data-os="ios"] .appbar { flex-direction: column; align-items: flex-start; gap: 2px; padding: 4px 16px 2px; }
+.phone[data-os="ios"] .back svg { display: none; }
+.phone[data-os="ios"] .back .ios-back { display: inline; }
+.phone[data-os="ios"] .ttl { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+.phone[data-os="ios"] .sub { color: #6c6c70; }
+.phone[data-os="ios"] .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 2px; background: #e3e3e8; border-radius: 9px; }
+.phone[data-os="ios"] .days button { border: 0; border-radius: 7px; height: 30px; font-size: 13px; padding: 0; }
+.phone[data-os="ios"] .days button[aria-pressed="true"] { background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, .12); }
+.phone[data-os="ios"] .days button[aria-pressed="true"]::before { content: none; }
+.phone[data-os="ios"] .lbl { font-size: 12.5px; font-weight: 400; color: #6c6c70; text-transform: uppercase; margin: 20px 0 6px 16px; }
+.phone[data-os="ios"] .slots { background: #fff; border-radius: 10px; }
+.phone[data-os="ios"] .slots li + li { margin-left: 16px; }
+.phone[data-os="ios"] .slots button { height: 44px; padding: 0 16px; color: #000; }
+.phone[data-os="ios"] .slots li + li button { padding-left: 0; box-shadow: inset 0 .5px 0 #c6c6c8; }
+.phone[data-os="ios"] .radio { display: none; }
+.phone[data-os="ios"] .check { display: inline; }
+.phone[data-os="ios"] .remind { background: #fff; border-radius: 10px; padding: 7px 16px; margin-top: 18px; color: #000; }
+.phone[data-os="ios"] .sw { width: 51px; height: 31px; border: 0; border-radius: 16px; background: #e9e9eb; }
+.phone[data-os="ios"] .sw::after { left: 2px; top: 2px; width: 27px; height: 27px; background: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, .2); }
+.phone[data-os="ios"] .remind[aria-pressed="true"] .sw { background: #34c759; }
+.phone[data-os="ios"] .remind[aria-pressed="true"] .sw::after { left: 22px; top: 2px; width: 27px; height: 27px; }
+.phone[data-os="ios"] .cta { border-radius: 14px; height: 50px; font-size: 17px; }
+.phone[data-os="ios"] .nav { background: rgba(249, 249, 249, .96); box-shadow: inset 0 .5px 0 #c6c6c8; padding: 7px 6px 26px; }
+.phone[data-os="ios"] .nav > span { font-size: 10px; font-weight: 500; color: #8e8e93; gap: 2px; }
+.phone[data-os="ios"] .nav .on { color: var(--tint); }
+.phone[data-os="ios"] .nav .pill { width: 30px; height: 26px; }
+.phone[data-os="ios"] .nav .on .pill { background: transparent; }
+.phone[data-os="ios"] .nav::after { width: 120px; height: 5px; bottom: 8px; background: #000; opacity: 1; }
 
-.targets {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 9.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+@media (prefers-reduced-motion: reduce) {
+  .phone *, .sw::after, .os button { transition: none !important; }
+  html { scroll-behavior: auto; }
 }
-.targets li {
-  line-height: 1.1;
-  height: 2.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: .6rem;
-}
-.targets b { font-stretch: 112%; font-weight: 750; font-size: clamp(1rem, 2vw, 1.2rem); }
-.targets span { font-size: .9rem; }
-
-@media (prefers-reduced-motion: no-preference) {
-  .fork path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: draw .9s cubic-bezier(.6, 0, .2, 1) forwards;
-  }
-  .fork path:nth-child(2) { animation-delay: .12s; }
-  .fork path:nth-child(3) { animation-delay: .24s; }
-  .targets li { opacity: 0; animation: arrive .45s ease-out forwards; }
-  .targets li:nth-child(1) { animation-delay: .75s; }
-  .targets li:nth-child(2) { animation-delay: .87s; }
-  .targets li:nth-child(3) { animation-delay: .99s; }
-}
-@keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes arrive { from { opacity: 0; transform: translateX(-.4rem); } to { opacity: 1; transform: none; } }
 
 /* ---------- Sections ---------- */
-section.block { padding-block: clamp(4rem, 10vw, 8rem); }
+.block { padding-block: clamp(4rem, 9vw, 7.5rem); }
 
 .services {
-  display: grid;
-  max-width: 64rem;
+  display: grid; max-width: 64rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
-  gap: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 5vw, 5rem);
+  gap: clamp(2.25rem, 4vw, 3.25rem) clamp(2rem, 6vw, 5.5rem);
 }
 .services p { margin: 0; }
-.services .stack { margin-top: .75rem; font-size: .95rem; font-stretch: 87%; color: #333; }
+p.stack { margin-top: .7rem; font-size: .92rem; color: var(--moss); }
 
-/* Reference: one project, shown properly */
-.work { background: var(--mist); }
+.ref { background: #fff; }
 .feature {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
   gap: 1.5rem clamp(2rem, 6vw, 6rem);
-  border-top: 2px solid var(--ink);
-  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 2px solid var(--ink); padding-top: clamp(1.5rem, 3vw, 2.5rem);
 }
-.feature .pname {
-  font-stretch: 125%;
-  font-weight: 800;
-  font-size: clamp(2rem, 4.6vw, 3.5rem);
-  line-height: 1;
-  letter-spacing: -.02em;
-  margin: 0;
-}
-.facts-list { margin: 1.75rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: 1.25rem 2rem; }
-.facts-list div { border-top: 1px solid var(--rule); padding-top: .6rem; }
-.facts-list dt { font-size: .9rem; font-stretch: 87%; }
-.facts-list dd { margin: .15rem 0 0; font-weight: 700; font-stretch: 112%; font-size: 1.1rem; line-height: 1.25; }
-.feature .stack { font-size: .95rem; font-stretch: 87%; color: #333; margin: 0; }
+.feature .pname { font-size: clamp(2rem, 4.4vw, 3.25rem); font-weight: 800; letter-spacing: -.035em; line-height: 1; margin: 0; }
+.facts { margin: 1.75rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: 1.25rem 2rem; }
+.facts div { border-top: 1px solid var(--rule); padding-top: .6rem; }
+.facts dt { font-size: .88rem; color: var(--moss); }
+.facts dd { margin: .15rem 0 0; font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.feature p.stack { margin: 0; }
 @media (max-width: 46rem) { .feature { grid-template-columns: minmax(0, 1fr); } }
 
-/* Approach */
-.approach {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-  gap: 2.5rem clamp(2rem, 5vw, 5rem);
-}
+.approach { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 2.5rem clamp(2rem, 5vw, 5rem); }
 .approach p { margin: 0; }
 
-/* Contact */
-.contact { background: var(--night); color: var(--paper); }
-.contact a { color: var(--paper); }
-.contact h2.display { max-width: 16ch; }
+.contact h2 { color: var(--ground); max-width: 15ch; }
+.contact p { color: var(--on-dark); }
 .mail {
-  display: inline-block;
-  font-stretch: 112%;
-  font-weight: 750;
-  font-size: clamp(1.25rem, 4.4vw, 2.6rem);
-  line-height: 1.15;
-  word-break: break-word;
-  text-decoration-thickness: .06em;
+  display: inline-block; margin-top: .5rem;
+  font-weight: 750; font-size: clamp(1.3rem, 4.2vw, 2.5rem); letter-spacing: -.02em; line-height: 1.2;
+  color: var(--ground); word-break: break-word;
+  text-decoration-color: var(--rose); text-decoration-thickness: .08em;
 }
-.contact .facts { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: .75rem 2.5rem; }
-.contact .facts p { margin: 0; }
+.where { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: .5rem 2.5rem; }
+.contact .where p { margin: 0; color: var(--on-dark-2); }
 
-/* Footer + legal */
-footer { background: var(--ink); color: var(--paper); padding-block: 2.5rem 3rem; font-size: .95rem; }
-footer :focus-visible { outline-color: var(--paper); }
-footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; align-items: baseline; }
-
-details { margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.25); }
-summary {
-  cursor: pointer;
-  font-weight: 700;
-  font-stretch: 112%;
-  padding-block: 1rem;
-  list-style: none;
-}
+footer { background: #0e1d16; color: var(--on-dark-2); padding-block: 2.25rem 3rem; font-size: .95rem; }
+.frow { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; }
+details { margin-top: 1.25rem; border-top: 1px solid rgba(238, 242, 234, .18); }
+summary { cursor: pointer; font-weight: 650; color: var(--on-dark); padding-block: 1rem; list-style: none; }
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "+"; float: right; font-weight: 400; transition: transform .2s; }
 details[open] summary::after { transform: rotate(45deg); }
-details .legal { padding-bottom: 1rem; color: #d9d9d9; }
-details .legal h4 { color: var(--paper); font-stretch: 112%; margin: 1.25rem 0 .35rem; font-size: 1rem; }
-details .legal p { max-width: 44rem; }
+.legal { padding-bottom: 1rem; }
+.legal h4 { color: var(--on-dark); margin: 1.25rem 0 .35rem; font-size: 1rem; }
+.legal p { max-width: 44rem; }
+mark.todo { background: #ffe27a; color: #000; padding: 0 .2em; border-radius: 2px; }
 
-/* Fill-in markers for details that aren't known yet */
-mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2px; }
+@media (max-width: 52rem) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 22rem) {
+  .phone { transform: scale(.9); transform-origin: top center; margin-bottom: -60px; }
+}
 </style>
 </head>
 <body>
 
-<header class="hero">
+<header class="hero dark">
   <div class="wrap bar">
     <a class="name" href="#top" id="top">Florian Geymayer</a>
-    <button class="lang" type="button" id="lang" aria-label="Switch to English"><span lang="de">English</span><span lang="en">Deutsch</span></button>
+    <button class="lang" type="button" id="lang"><span lang="de">English</span><span lang="en">Deutsch</span></button>
   </div>
 
-  <div class="wrap hero-body">
-    <h1 class="display">
-      <span lang="de">Apps für Android und iOS. Nativ, aus einem Kern.</span>
-      <span lang="en">Apps for Android and iOS. Native, from one core.</span>
-    </h1>
-    <p class="lede">
-      <span lang="de">Ich entwickle mobile Apps mit Kotlin Multiplatform: Logik, Daten und Schnittstellen schreibe ich einmal, die Oberfläche baue ich für jede Plattform so, wie sie sich dort richtig anfühlt. Den Server dazu betreibe ich auf Wunsch gleich mit.</span>
-      <span lang="en">I build mobile apps with Kotlin Multiplatform: logic, data and networking are written once, and the interface is built for each platform the way it should feel there. If you need a backend, I can run that too.</span>
-    </p>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>
+        <span lang="de">Apps, die sich auf jedem Handy richtig anfühlen.</span>
+        <span lang="en">Apps that feel right on every phone.</span>
+      </h1>
+      <p class="lede">
+        <span lang="de">Ich entwickle Apps für Android und iOS. Die Logik schreibe ich einmal in Kotlin, die Oberfläche baue ich für jede Plattform nativ – so, wie es die Menschen von ihrem Handy gewohnt sind.</span>
+        <span lang="en">I build apps for Android and iOS. The logic is written once in Kotlin, and the interface is built natively for each platform – the way people expect from their phone.</span>
+      </p>
+      <p class="lede">
+        <span lang="de">Probieren Sie es aus: Hier sehen Sie dieselbe App auf beiden Systemen.</span>
+        <span lang="en">Try it: here is the same app on both systems.</span>
+      </p>
+    </div>
 
-    <div class="fork" aria-label="Ein gemeinsamer Kotlin-Kern für Android, iOS und Server">
-      <div class="core">
-        <small lang="de">Gemeinsamer Kern</small><small lang="en">Shared core</small>
-        Kotlin
+    <div class="demo">
+      <div class="os" role="group" aria-label="Plattform wählen">
+        <button type="button" data-os="android" aria-pressed="true">Android</button>
+        <button type="button" data-os="ios" aria-pressed="false">iOS</button>
       </div>
-      <svg viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
-        <path pathLength="1" d="M0 60 C 50 60, 45 14, 96 14"/>
-        <path pathLength="1" d="M0 60 L 96 60"/>
-        <path pathLength="1" d="M0 60 C 50 60, 45 106, 96 106"/>
-      </svg>
-      <ul class="targets">
-        <li><b>Android</b><span>Jetpack Compose</span></li>
-        <li><b>iOS</b><span>SwiftUI</span></li>
-        <li><b>Server</b><span lang="de">gehostet in der EU</span><span lang="en">hosted in the EU</span></li>
-      </ul>
+
+      <div class="phone" id="phone" data-os="android">
+        <div class="screen">
+          <div class="sbar" aria-hidden="true"><span>9:41</span><span class="cam"></span><span class="sig"><i></i><i></i></span></div>
+
+          <div class="appbar">
+            <span class="back" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24"><path d="M20 12H5m6-7-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="ios-back">‹ <span lang="de">Termine</span><span lang="en">Bookings</span></span>
+            </span>
+            <p class="ttl"><span lang="de">Termin buchen</span><span lang="en">Book a slot</span></p>
+          </div>
+          <p class="sub"><span lang="de">Radwerkstatt Pichler, Service</span><span lang="en">Pichler bike workshop, service</span></p>
+
+          <div class="body">
+            <div class="days" data-group>
+              <button type="button" aria-pressed="false"><span lang="de">Mo 16.</span><span lang="en">Mon 16</span></button>
+              <button type="button" aria-pressed="true"><span lang="de">Di 17.</span><span lang="en">Tue 17</span></button>
+              <button type="button" aria-pressed="false"><span lang="de">Mi 18.</span><span lang="en">Wed 18</span></button>
+            </div>
+
+            <p class="lbl"><span lang="de">Uhrzeit</span><span lang="en">Time</span></p>
+            <ul class="slots" data-group>
+              <li><button type="button" aria-pressed="false"><span class="radio"></span>09:00<span class="check">✓</span></button></li>
+              <li><button type="button" aria-pressed="true"><span class="radio"></span>10:30<span class="check">✓</span></button></li>
+              <li><button type="button" aria-pressed="false"><span class="radio"></span>14:00<span class="check">✓</span></button></li>
+            </ul>
+
+            <button type="button" class="remind" aria-pressed="true"><span lang="de">Erinnerung am Vortag</span><span lang="en">Remind me the day before</span><span class="sw"></span></button>
+
+            <button type="button" class="cta"><span lang="de">Termin bestätigen</span><span lang="en">Confirm booking</span></button>
+          </div>
+
+          <div class="nav" aria-hidden="true">
+            <span class="on"><span class="pill"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4m8-4v4"/></svg></span><span lang="de">Buchen</span><span lang="en">Book</span></span>
+            <span><span class="pill"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></span><span lang="de">Termine</span><span lang="en">Bookings</span></span>
+            <span><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4"/><path d="M4.5 20c1.2-4 4-5.5 7.5-5.5s6.3 1.5 7.5 5.5"/></svg></span><span lang="de">Profil</span><span lang="en">Profile</span></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="demo-note">
+        <span lang="de">Beispiel-App zum Ausprobieren. Dieselbe Logik, zwei native Oberflächen.</span>
+        <span lang="en">Sample app to try out. Same logic, two native interfaces.</span>
+      </p>
     </div>
   </div>
 </header>
@@ -345,12 +366,12 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
 <main>
   <section class="block" aria-labelledby="h-services">
     <div class="wrap">
-      <h2 class="display" id="h-services"><span lang="de">Was ich mache</span><span lang="en">What I do</span></h2>
+      <h2 id="h-services"><span lang="de">Was ich mache</span><span lang="en">What I do</span></h2>
       <div class="services">
         <div>
-          <h3><span lang="de">Native Apps</span><span lang="en">Native apps</span></h3>
-          <p lang="de">Eine Codebasis für die Logik, echte native Oberflächen auf beiden Plattformen. Keine Web-Ansicht im App-Mantel, sondern Apps, die sich wie Android und wie iOS verhalten.</p>
-          <p lang="en">One codebase for the logic, truly native interfaces on both platforms. Not a web view in an app wrapper, but apps that behave like Android and like iOS.</p>
+          <h3><span lang="de">Native Apps für Android und iOS</span><span lang="en">Native apps for Android and iOS</span></h3>
+          <p lang="de">Eine gemeinsame Codebasis für Logik und Daten, echte native Oberflächen auf beiden Plattformen. Keine Website im App-Mantel, sondern Apps, die sich verhalten, wie man es erwartet.</p>
+          <p lang="en">One shared codebase for logic and data, truly native interfaces on both platforms. Not a website in an app wrapper, but apps that behave the way people expect.</p>
           <p class="stack">Kotlin Multiplatform, Jetpack Compose, SwiftUI</p>
         </div>
         <div>
@@ -375,15 +396,15 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
     </div>
   </section>
 
-  <section class="block work" aria-labelledby="h-work">
+  <section class="block ref" aria-labelledby="h-ref">
     <div class="wrap">
-      <h2 class="display" id="h-work"><span lang="de">Referenz</span><span lang="en">Reference</span></h2>
+      <h2 id="h-ref"><span lang="de">Referenz</span><span lang="en">Reference</span></h2>
       <article class="feature">
         <h3 class="pname">The Journey</h3>
-        <div class="feature-body">
+        <div>
           <p lang="de">Eine Kursplattform für einen Kunden, mit zahlenden Teilnehmerinnen und Teilnehmern. Ich habe Web-Plattform und App entwickelt und betreibe die gesamte Infrastruktur: Server, Datenbank, Medienspeicher und Video-Streaming.</p>
           <p lang="en">A course platform for a client, with paying members. I built the web platform and the app and run the entire infrastructure: servers, database, media storage and video streaming.</p>
-          <dl class="facts-list">
+          <dl class="facts">
             <div><dt lang="de">Inhalte</dt><dt lang="en">Content</dt><dd lang="de">Kurse mit Video-Streaming</dd><dd lang="en">Courses with video streaming</dd></div>
             <div><dt lang="de">Umfang</dt><dt lang="en">Scope</dt><dd>Web, App, Hosting</dd></div>
             <div><dt lang="de">Betrieb</dt><dt lang="en">Hosting</dt><dd lang="de">Eigene Server in Deutschland</dd><dd lang="en">Own servers in Germany</dd></div>
@@ -396,7 +417,7 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
 
   <section class="block" aria-labelledby="h-approach">
     <div class="wrap">
-      <h2 class="display" id="h-approach"><span lang="de">Wie ich arbeite</span><span lang="en">How I work</span></h2>
+      <h2 id="h-approach"><span lang="de">Wie ich arbeite</span><span lang="en">How I work</span></h2>
       <div class="approach">
         <div>
           <h3><span lang="de">Direkt</span><span lang="en">Directly</span></h3>
@@ -410,23 +431,23 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
         </div>
         <div>
           <h3><span lang="de">Bis in den Betrieb</span><span lang="en">Into production</span></h3>
-          <p lang="de">Automatisierte Builds und Tests, Veröffentlichung im Play Store und App Store, und danach Updates, Monitoring und Wartung, solange Sie es brauchen.</p>
-          <p lang="en">Automated builds and tests, publishing on the Play Store and App Store, and then updates, monitoring and maintenance for as long as you need them.</p>
+          <p lang="de">Automatisierte Builds und Tests, Veröffentlichung im Play Store und App Store, und danach Updates und Wartung, solange Sie es brauchen.</p>
+          <p lang="en">Automated builds and tests, publishing on the Play Store and App Store, and then updates and maintenance for as long as you need them.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block contact on-dark" aria-labelledby="h-contact" id="kontakt">
+  <section class="block contact dark" aria-labelledby="h-contact" id="kontakt">
     <div class="wrap">
-      <h2 class="display" id="h-contact"><span lang="de">Erzählen Sie mir von Ihrer App.</span><span lang="en">Tell me about your app.</span></h2>
+      <h2 id="h-contact"><span lang="de">Erzählen Sie mir von Ihrer App.</span><span lang="en">Tell me about your app.</span></h2>
       <p>
         <span lang="de">Eine Idee, ein bestehendes Projekt, das Hilfe braucht, oder eine App, die endlich auch auf dem iPhone laufen soll: Schreiben Sie mir, ich antworte innerhalb von zwei Werktagen.</span>
         <span lang="en">An idea, an existing project that needs help, or an app that should finally run on the iPhone as well: write to me and I'll reply within two working days.</span>
       </p>
       <!-- TODO: echte Kontaktadresse einsetzen -->
       <a class="mail" href="mailto:kontakt@floriangeymayer.com">kontakt@floriangeymayer.com</a>
-      <div class="facts">
+      <div class="where">
         <p>Leibnitz, <span lang="de">Steiermark, Österreich</span><span lang="en">Styria, Austria</span></p>
         <p><span lang="de">Deutsch und Englisch</span><span lang="en">German and English</span></p>
       </div>
@@ -436,7 +457,7 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
 
 <footer>
   <div class="wrap">
-    <div class="row">
+    <div class="frow">
       <span>© <span id="year">2026</span> Florian Geymayer</span>
       <span lang="de">Diese Seite setzt keine Cookies und kein Tracking ein.</span>
       <span lang="en">This site uses no cookies and no tracking.</span>
@@ -477,30 +498,56 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
 </footer>
 
 <script>
-(function () {
-  var root = document.documentElement;
-  var btn = document.getElementById("lang");
-  var stored = null;
-  try { stored = localStorage.getItem("lang"); } catch (e) {}
-  var initial = stored || (/^de\b/i.test(navigator.language || "de") ? "de" : "en");
+{
+  const root = document.documentElement;
+  const langBtn = document.getElementById("lang");
+  const phone = document.getElementById("phone");
+  const osBtns = document.querySelectorAll(".os button");
 
-  function apply(lang) {
+  const setLang = (lang) => {
     root.lang = lang;
-    btn.setAttribute("aria-label", lang === "de" ? "Switch to English" : "Auf Deutsch umschalten");
+    langBtn.setAttribute("aria-label", lang === "de" ? "Switch to English" : "Auf Deutsch umschalten");
     document.title = lang === "de"
       ? "Florian Geymayer – App-Entwicklung für Android und iOS"
       : "Florian Geymayer – App development for Android and iOS";
-  }
-
-  apply(initial);
-  btn.addEventListener("click", function () {
-    var next = root.lang === "de" ? "en" : "de";
-    apply(next);
+  };
+  let stored = null;
+  try { stored = localStorage.getItem("lang"); } catch (e) {}
+  setLang(stored || (/^de\b/i.test(navigator.language || "de") ? "de" : "en"));
+  langBtn.addEventListener("click", () => {
+    const next = root.lang === "de" ? "en" : "de";
+    setLang(next);
     try { localStorage.setItem("lang", next); } catch (e) {}
   });
 
+  // Platform switch – start with the visitor's own platform
+  const setOs = (os) => {
+    phone.dataset.os = os;
+    osBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.os === os)));
+  };
+  setOs(/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) ? "ios" : "android");
+  osBtns.forEach((b) => b.addEventListener("click", () => setOs(b.dataset.os)));
+
+  // The sample app works: pick a day, a time, toggle the reminder
+  phone.querySelectorAll("[data-group]").forEach((group) => {
+    const items = group.querySelectorAll("button");
+    items.forEach((btn) => btn.addEventListener("click", () => {
+      items.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    }));
+  });
+  const remind = phone.querySelector(".remind");
+  remind.addEventListener("click", () => {
+    remind.setAttribute("aria-pressed", String(remind.getAttribute("aria-pressed") !== "true"));
+  });
+  const cta = phone.querySelector(".cta");
+  cta.addEventListener("click", () => {
+    const de = cta.querySelector('[lang="de"]'), en = cta.querySelector('[lang="en"]');
+    de.textContent = "Gebucht ✓"; en.textContent = "Booked ✓";
+    setTimeout(() => { de.textContent = "Termin bestätigen"; en.textContent = "Confirm booking"; }, 1800);
+  });
+
   document.getElementById("year").textContent = new Date().getFullYear();
-})();
+}
 </script>
 </body>
 </html>
