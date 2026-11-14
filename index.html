@@ -10,8 +10,8 @@
 <meta property="og:description" content="Native Apps für Android und iOS, aus einem gemeinsamen Kotlin-Kern.">
 <meta property="og:url" content="https://www.floriangeymayer.com/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#008cff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23008cff'/%3E%3Cpath d='M9 8h13M9 8v16M9 16h10' stroke='%23000' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230068d6'/%3E%3Cpath d='M9 8h13M9 8v16M9 16h10' stroke='%23fff' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face {
@@ -23,12 +23,12 @@
 }
 
 :root {
-  --signal: #008cff;
-  --ink: #000;
+  --blue: #0068d6;
+  --ink: #0d1b2a;
   --paper: #fff;
-  --mist: #e8f3ff;
-  --night: #00284d;
-  --rule: rgba(0, 0, 0, .14);
+  --mist: #f1f5fa;
+  --night: #062a4f;
+  --rule: rgba(13, 27, 42, .14);
   --measure: 38rem;
   --pad: clamp(1.25rem, 5vw, 4rem);
 }
@@ -63,7 +63,7 @@ a:hover { text-decoration-thickness: .14em; }
   outline-offset: 3px;
   border-radius: 2px;
 }
-.on-blue :focus-visible { outline-color: var(--paper); }
+.on-dark :focus-visible { outline-color: var(--paper); }
 
 .wrap { padding-inline: var(--pad); max-width: 82rem; margin-inline: auto; width: 100%; }
 
@@ -92,7 +92,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 /* ---------- Hero ---------- */
 .hero {
-  background: var(--signal);
+  background: var(--paper);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -124,7 +124,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   padding: .3rem .85rem;
   cursor: pointer;
 }
-.lang:hover { background: var(--ink); color: var(--signal); }
+.lang:hover { background: var(--ink); color: var(--paper); }
 
 .hero-body {
   flex: 1;
@@ -167,9 +167,10 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   font-size: clamp(1.15rem, 2.6vw, 1.75rem);
   line-height: 1.05;
   padding: .7em .8em;
-  border: 3px solid var(--ink);
+  border: 3px solid var(--blue);
   border-radius: .45em;
-  background: var(--signal);
+  color: var(--blue);
+  background: var(--paper);
 }
 .core small {
   display: block;
@@ -181,7 +182,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 
 .fork svg { width: var(--svgw); height: 9.5rem; display: block; overflow: visible; }
-.fork path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; }
+.fork path { fill: none; stroke: var(--blue); stroke-width: 2.4; stroke-linecap: round; }
 @media (max-width: 26rem) { .fork { --svgw: 5.5rem; } .targets span { font-size: .82rem; } }
 
 .targets {
@@ -265,7 +266,8 @@ section.block { padding-block: clamp(4rem, 10vw, 8rem); }
 .approach p { margin: 0; }
 
 /* Contact */
-.contact { background: var(--signal); }
+.contact { background: var(--night); color: var(--paper); }
+.contact a { color: var(--paper); }
 .contact h2.display { max-width: 16ch; }
 .mail {
   display: inline-block;
@@ -305,7 +307,7 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
 </head>
 <body>
 
-<header class="hero on-blue">
+<header class="hero">
   <div class="wrap bar">
     <a class="name" href="#top" id="top">Florian Geymayer</a>
     <button class="lang" type="button" id="lang" aria-label="Switch to English"><span lang="de">English</span><span lang="en">Deutsch</span></button>
@@ -379,10 +381,10 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
       <article class="feature">
         <h3 class="pname">The Journey</h3>
         <div class="feature-body">
-          <p lang="de">Eine Kursplattform für einen Kunden, mit zahlenden Teilnehmerinnen und Teilnehmern in Österreich, Deutschland, Großbritannien und Rumänien. Ich habe Web-Plattform und App entwickelt und betreibe die gesamte Infrastruktur: Server, Datenbank, Medienspeicher und Video-Streaming.</p>
-          <p lang="en">A course platform for a client, with paying members in Austria, Germany, the UK and Romania. I built the web platform and the app and run the entire infrastructure: servers, database, media storage and video streaming.</p>
+          <p lang="de">Eine Kursplattform für einen Kunden, mit zahlenden Teilnehmerinnen und Teilnehmern. Ich habe Web-Plattform und App entwickelt und betreibe die gesamte Infrastruktur: Server, Datenbank, Medienspeicher und Video-Streaming.</p>
+          <p lang="en">A course platform for a client, with paying members. I built the web platform and the app and run the entire infrastructure: servers, database, media storage and video streaming.</p>
           <dl class="facts-list">
-            <div><dt lang="de">Mitglieder in</dt><dt lang="en">Members in</dt><dd lang="de">4 Ländern</dd><dd lang="en">4 countries</dd></div>
+            <div><dt lang="de">Inhalte</dt><dt lang="en">Content</dt><dd lang="de">Kurse mit Video-Streaming</dd><dd lang="en">Courses with video streaming</dd></div>
             <div><dt lang="de">Umfang</dt><dt lang="en">Scope</dt><dd>Web, App, Hosting</dd></div>
             <div><dt lang="de">Betrieb</dt><dt lang="en">Hosting</dt><dd lang="de">Eigene Server in Deutschland</dd><dd lang="en">Own servers in Germany</dd></div>
           </dl>
@@ -415,7 +417,7 @@ mark.todo { background: #ffd84d; color: #000; padding: 0 .2em; border-radius: 2p
     </div>
   </section>
 
-  <section class="block contact on-blue" aria-labelledby="h-contact" id="kontakt">
+  <section class="block contact on-dark" aria-labelledby="h-contact" id="kontakt">
     <div class="wrap">
       <h2 class="display" id="h-contact"><span lang="de">Erzählen Sie mir von Ihrer App.</span><span lang="en">Tell me about your app.</span></h2>
       <p>
