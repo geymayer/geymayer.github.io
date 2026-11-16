@@ -112,6 +112,26 @@ p { margin: 0 0 1em; max-width: 36rem; }
 .os button[aria-pressed="true"] { background: var(--rose); color: var(--ink); }
 .demo-note { font-size: .88rem; color: var(--on-dark-2); text-align: center; max-width: 19rem; margin: 0; }
 
+/* Scroll cue – desktop only, where the hero fills the screen and hides that more follows */
+.more { display: none; }
+@media (min-width: 52.0625rem) and (hover: hover) and (pointer: fine) {
+  .more {
+    display: inline-flex; align-items: center; gap: .5rem;
+    position: fixed; left: 50%; bottom: 1.5rem; z-index: 10;
+    transform: translateX(-50%);
+    font-size: .92rem; font-weight: 650; text-decoration: none;
+    color: var(--on-dark); background: var(--kernoel-2);
+    border: 1.5px solid rgba(238, 242, 234, .3); border-radius: 999px;
+    padding: .5rem 1rem .5rem 1.15rem;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .6);
+    transition: opacity .3s, transform .3s, border-color .2s;
+  }
+  .more:hover { border-color: var(--on-dark); }
+  .more svg { width: 18px; height: 18px; animation: nudge 1.8s ease-in-out infinite; }
+  html.scrolled .more { opacity: 0; pointer-events: none; transform: translate(-50%, .75rem); }
+}
+@keyframes nudge { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+
 /* ---------- The phone ---------- */
 .phone {
   --tint: #2f6b4f;
@@ -226,6 +246,7 @@ p { margin: 0 0 1em; max-width: 36rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .phone *, .sw::after, .os button { transition: none !important; }
+  .more svg { animation: none !important; }
   html { scroll-behavior: auto; }
 }
 
@@ -364,10 +385,15 @@ mark.todo { background: #ffe27a; color: #000; padding: 0 .2em; border-radius: 2p
       </p>
     </div>
   </div>
+
+  <a class="more" href="#leistungen" tabindex="-1">
+    <span lang="de">Mehr erfahren</span><span lang="en">See more</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
 </header>
 
 <main>
-  <section class="block" aria-labelledby="h-services">
+  <section class="block" aria-labelledby="h-services" id="leistungen">
     <div class="wrap">
       <h2 id="h-services"><span lang="de">Leistungen</span><span lang="en">Services</span></h2>
       <div class="services">
@@ -543,6 +569,13 @@ mark.todo { background: #ffe27a; color: #000; padding: 0 .2em; border-radius: 2p
     de.textContent = "Gebucht ✓"; en.textContent = "Booked ✓";
     setTimeout(() => { de.textContent = "Termin bestätigen"; en.textContent = "Confirm booking"; }, 1800);
   });
+
+  // Scroll cue disappears once the visitor scrolls (or if there is nothing to scroll)
+  const markScrolled = () => root.classList.toggle("scrolled",
+    window.scrollY > 40 || root.scrollHeight <= window.innerHeight + 40);
+  window.addEventListener("scroll", markScrolled, { passive: true });
+  window.addEventListener("resize", markScrolled);
+  markScrolled();
 
   document.getElementById("year").textContent = new Date().getFullYear();
 }
