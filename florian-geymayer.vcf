@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Geymayer;Florian;;;
+FN:Florian Geymayer
+ORG:Florian Geymayer – App-Entwicklung
+TITLE:App-Entwickler
+EMAIL;TYPE=INTERNET,WORK:office@floriangeymayer.com
+URL:https://www.floriangeymayer.com/
+ADR;TYPE=WORK:;;;Leibnitz;Steiermark;8430;Österreich
+END:VCARD
